@@ -1,28 +1,28 @@
 # eren-setup
 
-Public macOS bootstrap repo for a fresh machine.
+新しい macOS を素早く立ち上げるための、公開前提のセットアップリポジトリです。
 
-The goal is not "100% unattended setup". The goal is a reliable split between:
+目的は「完全自動化」ではなく、以下をきれいに分離することです。
 
-- `setup.sh` for installable and repeatable steps
-- `post-setup.md` for login, first-run, and verification tasks
+- `setup.sh`: インストールや設定など、再実行しやすい処理
+- `post-setup.md`: ログイン、初回起動、確認作業など人手が必要な処理
 
-## What This Repo Sets Up
+## このリポジトリでセットアップするもの
 
 - Homebrew
-- Core CLI tools
-- Common GUI apps
-- `mise` and Node.js
-- npm global packages for local AI / agent workflows
-- Optional personal tools behind environment flags
+- 基本的な CLI ツール
+- よく使う GUI アプリ
+- `mise` と Node.js
+- AI / Agent 系の npm グローバルパッケージ
+- 環境変数で有効化する任意の個人用ツール
 
-## Files
+## ファイル構成
 
-- `setup.sh`: main bootstrap script
-- `Brewfile`: core Homebrew formulae and casks
-- `post-setup.md`: manual tasks after install
+- `setup.sh`: メインのセットアップスクリプト
+- `Brewfile`: Homebrew で入れる formula / cask 一覧
+- `post-setup.md`: セットアップ後の手動チェックリスト
 
-## Usage
+## 使い方
 
 ```bash
 git clone https://github.com/MASAKASUNO1/eren-setup.git
@@ -31,9 +31,9 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-### Optional Flags
+## オプション
 
-All options are controlled with environment variables.
+各オプションは環境変数で切り替えます。
 
 ```bash
 INSTALL_GUI_APPS=0 ./setup.sh
@@ -43,48 +43,48 @@ INSTALL_AGENT_BROWSER=1 ./setup.sh
 NODE_VERSION=24 ./setup.sh
 ```
 
-## Default Behavior
+## デフォルト動作
 
-By default the script:
+何も指定しない場合、スクリプトは以下を実行します。
 
-- installs Homebrew if needed
-- installs core CLI tools
-- installs common GUI apps
-- enables `mise`
-- installs Node.js via `mise`
-- installs npm globals: `@openai/codex`, `agent-browser`, `aiimage-cli`
+- Homebrew が未導入ならインストール
+- 基本的な CLI ツールをインストール
+- 一般的な GUI アプリをインストール
+- `mise` を有効化
+- `mise` 経由で Node.js をインストール
+- npm グローバルパッケージ `@openai/codex`、`agent-browser`、`aiimage-cli` をインストール
 
-It does not automatically complete:
+一方で、以下は自動化の対象外です。
 
-- GitHub, Vercel, Bitwarden, Slack, Google sign-in
+- GitHub、Vercel、Bitwarden、Slack、Google へのログイン
 - `tailscale up`
-- first-run GUI permissions and browser prompts
+- GUI アプリ初回起動時の許可ダイアログやブラウザ確認
 
-## Optional Personal Tools
+## 個人用ツール
 
-Set `INSTALL_PERSONAL_TOOLS=1` to also install:
+`INSTALL_PERSONAL_TOOLS=1` を付けると、以下も追加でインストールします。
 
 - `git-gtr`
 - `gogcli`
 - `codexbar`
 - `nordvpn`
 
-These are kept out of the default flow because they are more opinionated and less portable.
+これらは用途がやや個人依存なので、デフォルトでは外しています。
 
-## Publish Notes
+## Public 運用時の注意
 
-This repository is safe to keep public as long as you do not commit:
+このリポジトリは public で運用できますが、以下は commit しない前提です。
 
-- API keys
-- personal email addresses
-- private URLs
-- company-specific scripts
-- machine-specific dotfiles with secrets
+- API キー
+- 個人メールアドレス
+- private URL
+- 会社固有のスクリプト
+- 秘密情報を含む dotfiles やローカル設定
 
-## Manual Follow-Up
+## セットアップ後の手作業
 
-After running the script, complete the checklist in [post-setup.md](post-setup.md).
+`./setup.sh` 実行後は [post-setup.md](post-setup.md) のチェックリストを進めてください。
 
-## License
+## ライセンス
 
 MIT

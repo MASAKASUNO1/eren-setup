@@ -1,27 +1,27 @@
 # Post Setup
 
-Run these tasks after `./setup.sh` finishes.
+`./setup.sh` 実行後に行う手動作業のチェックリストです。
 
-## Login
+## ログイン
 
 - `gh auth login`
 - `vercel login`
-- `bw login` if you use the Bitwarden CLI separately
-- Sign in to Slack
-- Sign in to Bitwarden
-- Sign in to Google in Chrome
+- Bitwarden CLI を使うなら `bw login`
+- Slack にサインイン
+- Bitwarden にサインイン
+- Chrome で Google アカウントにサインイン
 - `sudo tailscale up`
-- `gogcli auth` if you installed optional personal tools
+- 個人用ツールを入れた場合は `gogcli auth`
 
-## First-Run Checks
+## 初回確認
 
-- Launch Chrome and confirm sync / profile settings
-- Launch VS Code and install any personal extensions
-- Launch Ghostty and confirm shell startup works
-- Launch Stats and grant permissions if prompted
-- Run `agent-browser install` again if the first install was skipped or incomplete
+- Chrome を起動して同期やプロフィール設定を確認する
+- VS Code を起動して必要な拡張を入れる
+- Ghostty を起動して shell の立ち上がりを確認する
+- Stats を起動して権限ダイアログが出たら許可する
+- `agent-browser install` をスキップした場合や不完全だった場合は再実行する
 
-## Verify
+## 動作確認
 
 - `brew --version`
 - `git --version`
@@ -33,9 +33,9 @@ Run these tasks after `./setup.sh` finishes.
 - `vercel --version`
 - `python3 --version`
 
-## Recommended Optional Apps
+## GUI アプリを後で開く場合
 
-If you skipped GUI apps during setup:
+GUI アプリの導入をスキップした場合や、あとでまとめて確認したい場合:
 
 - `open -a "Google Chrome"`
 - `open -a "Visual Studio Code"`
